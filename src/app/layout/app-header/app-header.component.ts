@@ -3,7 +3,7 @@ import { ToggleService } from '../../shared/services/toggle.service';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-app-header',
+  selector: 'app-header',
   standalone: false,
   templateUrl: './app-header.component.html',
   styleUrl: './app-header.component.scss',

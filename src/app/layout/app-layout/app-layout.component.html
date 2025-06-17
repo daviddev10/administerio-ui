@@ -1,16 +1,15 @@
-<div>
+<div [class.dark-theme]="toggleService.isDark()">
     <!-- Sidebar -->
-    <app-app-sidebar></app-app-sidebar>
+    <app-sidebar></app-sidebar>
     <!-- Main Content -->
-    <div
-        class="main-content transition d-flex flex-column"
-        [ngClass]="{'active': isToggled}"
-    >
-        <app-app-header></app-app-header>
+    <div class="main-content transition d-flex flex-column" [ngClass]="{'active': isToggled}">
+        <!-- Header -->
+        <app-header></app-header>
+        <!-- Content -->
         <router-outlet></router-outlet>
-        <router-outlet />
         <div class="flex-grow-1"></div>
-        <!-- <app-footer /> -->
+        <!-- Footer -->
+        <app-footer></app-footer>
     </div>
-    
+
 </div>

@@ -16,6 +16,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { CommonModule } from '@angular/common';
 import { FeathericonsModule } from './shared/icons/feathericons/feathericons.module';
 import { AppHeaderComponent } from './layout/app-header/app-header.component';
+import { AppFooterComponent } from './layout/app-footer/app-footer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AppHeaderComponent } from './layout/app-header/app-header.component';
     NotfoundComponent,
     AppLayoutComponent,
     AppSidebarComponent,
-    AppHeaderComponent
+    AppHeaderComponent,
+    AppFooterComponent
   ],
   imports: [
     RouterLink,
