@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '', component: AppLayoutComponent,
     children: [
-      { path: 'miembros', loadChildren: () => import('./modules/members/members.module').then(m => m.MembersModule) },
+      { path: 'miembros', loadChildren: () => import('./modules/membership/membership.module').then(m => m.MembershipModule) },
       // { path: 'uikit', loadChildren: () => import('./demo/components/uikit/uikit.module').then(m => m.UIkitModule) },
       // { path: 'utilities', loadChildren: () => import('./demo/components/utilities/utilities.module').then(m => m.UtilitiesModule) },
       // { path: 'documentation', loadChildren: () => import('./demo/components/documentation/documentation.module').then(m => m.DocumentationModule) },

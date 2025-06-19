@@ -4,16 +4,19 @@
 // Plus imports for other components in your app.
 
 // _Variable
-@use "./assets/scss/variable" as *;
+@use "./assets/scss/theme/variable" as *;
 
 // Utilities CSS
-@use "./assets/scss/utilities" as *;
+@use "./assets/scss/theme/utilities" as *;
 
 // UI Kit CSS
-@use "./assets/scss/ui-kit" as *;
+@use "./assets/scss/theme/ui-kit" as *;
 
 // Dark CSS
-@use "./assets/scss/dark";
+@use "./assets/scss/theme/dark" as *;
+
+// Buttons
+@use "./assets/scss/custom/buttons.custom.scss" as *;
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
