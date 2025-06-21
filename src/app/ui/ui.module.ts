@@ -5,13 +5,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardContent, MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { CardContainerComponent } from './atoms/cards/card-container.component';
+import { ButtonPrimaryComponent } from './atoms/buttons/button-primary.component';
+import { FeathericonsModule } from '../shared/icons/feathericons/feathericons.module';
+import { ToolbarComponent } from './molecules/toolbar.component';
+import { FormContainerComponent } from './organisms/form-container.component';
 
 
 
 @NgModule({
   declarations: [
+    ToolbarComponent,
     ButtonOptionComponent,
-    CardContainerComponent
+    CardContainerComponent,
+    ButtonPrimaryComponent,
+    FormContainerComponent,
   ],
   imports: [
     CommonModule,
@@ -19,11 +26,14 @@ import { CardContainerComponent } from './atoms/cards/card-container.component';
     MatMenuModule,
     MatCardContent,
     MatButtonModule,
+    FeathericonsModule
   ],
   exports: [
+    ToolbarComponent,
     ButtonOptionComponent,
     CardContainerComponent,
-
+    ButtonPrimaryComponent,
+    FormContainerComponent,
   ]
 })
 export class UiModule { }

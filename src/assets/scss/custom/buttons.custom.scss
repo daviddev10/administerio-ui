@@ -15,6 +15,26 @@
     }
 }
 
+.mat-mdc-button-base.custom-button {
+    border-radius: 5px;
+    padding: 10px 30px;
+    font: {
+        size: 14px;
+        weight: 500;
+        family: var(--headingFontFamily);
+    }
+    .mdc-button__label {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        i-feather {
+            font-weight: normal;
+            height: 20px;
+            width: 20px;
+        }
+    }
+}
+
 /* Max width 767px */
 @media only screen and (max-width: 767px) {
     .mat-mdc-button.btn-option {
@@ -24,5 +44,15 @@
         i {
             font-size: 16px;
         }
+    }
+    .mat-mdc-button-base.custom-button {
+        padding: 10px 15px;
+        font-size: 12px;
+        .mdc-button__label {
+        i-feather {
+            height: 13px;
+            width: 13px;
+        }
+    }
     }
 }
