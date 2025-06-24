@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { FeathericonsModule } from './shared/icons/feathericons/feathericons.module';
 import { AppHeaderComponent } from './layout/app-header/app-header.component';
 import { AppFooterComponent } from './layout/app-footer/app-footer.component';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,10 @@ import { AppFooterComponent } from './layout/app-footer/app-footer.component';
     MatButtonModule,
     MatMenuModule
   ],
-  providers: [],
+  providers: [
+    // { provide: AlbumGateway, useClass: AlbumApiService }
+    provideHttpClient()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
