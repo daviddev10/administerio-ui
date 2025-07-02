@@ -18,6 +18,11 @@ import { FeathericonsModule } from './shared/icons/feathericons/feathericons.mod
 import { AppHeaderComponent } from './layout/app-header/app-header.component';
 import { AppFooterComponent } from './layout/app-footer/app-footer.component';
 import { provideHttpClient } from '@angular/common/http';
+import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
+
+
+ModuleRegistry.registerModules([AllCommunityModule]);
+
 
 @NgModule({
   declarations: [
@@ -30,13 +35,13 @@ import { provideHttpClient } from '@angular/common/http';
   ],
   imports: [
     RouterLink,
+    CommonModule,
+    RouterModule,
     BrowserModule,
+    RouterLinkActive,
     AppRoutingModule,
     NgScrollbarModule,
     MatExpansionModule,
-    RouterLinkActive,
-    RouterModule,
-    CommonModule,
     FeathericonsModule,
     // Angular Material
     MatCardModule,

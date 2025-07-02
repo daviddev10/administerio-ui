@@ -9,6 +9,9 @@ import { MemberListViewComponent } from './views/member-list-view/member-list-vi
 import { MatButtonModule } from '@angular/material/button';
 import { UiModule } from "../../ui/ui.module";
 
+import { AgGridAngular } from "ag-grid-angular";
+import { AppDataGridModule } from '../../ui/components/data-grid/app-data-grid.module';
+
 
 @NgModule({
   declarations: [
@@ -16,9 +19,10 @@ import { UiModule } from "../../ui/ui.module";
     MemberListViewComponent
   ],
   imports: [
+    UiModule,
     CommonModule,
+    AppDataGridModule,
     MembershipRoutingModule,
-    UiModule
 ]
 })
 export class MembershipModule { }
