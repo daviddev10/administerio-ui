@@ -7,7 +7,8 @@ import { IMember } from '../../../core/domain/interfaces/membership/member.inter
   selector: 'app-member-list',
   standalone: false,
   template: `<app-member-list-view
-              [memberList]="memberList">
+              [memberList]="memberList"
+              (onOpenMemberForm)="openMemberForm($event)">
              </app-member-list-view>`,
   styles: ``
 })
@@ -32,6 +33,8 @@ export class MemberListComponent implements OnInit {
     }
   }
 
-
+  public openMemberForm(memberData: IMember): void {
+    console.log('memberData :>> ', memberData);
+  }
 
 }

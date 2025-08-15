@@ -3,20 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { MembershipRoutingModule } from './membership-routing.module';
 import { MemberListComponent } from './controllers/member-list.component';
-import { MatCardContent, MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
 import { MemberListViewComponent } from './views/member-list-view/member-list-view.component';
-import { MatButtonModule } from '@angular/material/button';
 import { UiModule } from "../../ui/ui.module";
 
-import { AgGridAngular } from "ag-grid-angular";
 import { AppDataGridModule } from '../../ui/components/data-grid/app-data-grid.module';
+import { MemberFormComponent } from './controllers/member-form.component';
 
 
 @NgModule({
   declarations: [
     MemberListComponent,
-    MemberListViewComponent
+    MemberListViewComponent,
+    MemberFormComponent
   ],
   imports: [
     UiModule,
