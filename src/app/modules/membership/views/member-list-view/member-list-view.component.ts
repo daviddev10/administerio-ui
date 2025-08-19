@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { themeAlpine, themeBalham, themeQuartz, type ColDef } from "ag-grid-community";
 import { IMember } from '../../../../core/domain/interfaces/membership/member.interface';
 import { FORMAT_DATE } from '../../../../shared/libs/dayjs/format-date.dayjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-member-list-view',
@@ -13,7 +14,6 @@ import { FORMAT_DATE } from '../../../../shared/libs/dayjs/format-date.dayjs';
 export class MemberListViewComponent {
 
   @Input() memberList: IMember[] = [];
-  @Output() onOpenMemberForm = new EventEmitter<any>();
 
   public columns: ColDef<any>[] = [
     {
@@ -46,6 +46,19 @@ export class MemberListViewComponent {
     },
     { field: "PhoneNumber", headerName: 'Teléfono', width: 100 },
     { field: "CurrentAddress", headerName: 'Dirección' },
+
   ];
+
+  constructor(
+    private router: Router
+  ) {
+
+  }
+
+  public goToMemberForm(memberId?: number): void {
+    const memberFormUrl = memberId ? `miembros/editar/${memberId}` : `miembros/nuevo`;
+    this.router.navigate([memberFormUrl]);
+  }
+
 
 }

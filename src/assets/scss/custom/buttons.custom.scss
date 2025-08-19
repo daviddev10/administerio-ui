@@ -16,21 +16,29 @@
 }
 
 .mat-mdc-button-base.custom-button {
-    border-radius: 5px;
-    padding: 10px 30px;
+    height: auto;
+    min-width: auto;
+    border-radius: 6px;
+    padding: 10px 15px 11px;
     font: {
-        size: 14px;
+        size: 15px;
         weight: 500;
         family: var(--headingFontFamily);
     }
-    .mdc-button__label {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        i-feather {
-            font-weight: normal;
-            height: 20px;
-            width: 20px;
+}
+
+.default-btn {
+    &.mat-mdc-button {
+        height: auto;
+        min-width: auto;
+        border-radius: 6px;
+        padding: 10px 15px 11px;
+        color: var(--primaryColor);
+        background: rgba(55, 97, 238, 0.1);
+        font: {
+            size: 15px;
+            weight: 600;
+            family: var(--headingFontFamily);
         }
     }
 }
@@ -46,13 +54,12 @@
         }
     }
     .mat-mdc-button-base.custom-button {
-        padding: 10px 15px;
         font-size: 12px;
-        .mdc-button__label {
-        i-feather {
-            height: 13px;
-            width: 13px;
-        }
     }
+
+    .default-btn {
+        &.mat-mdc-button {
+            font-size: 12px;
+        }
     }
 }

@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MembershipService } from '../../../infrastructure/services/membership.service';
-import { firstValueFrom, Subscription } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { IMember } from '../../../core/domain/interfaces/membership/member.interface';
 
 @Component({
   selector: 'app-member-list',
   standalone: false,
   template: `<app-member-list-view
-              [memberList]="memberList"
-              (onOpenMemberForm)="openMemberForm($event)">
+              [memberList]="memberList">
              </app-member-list-view>`,
   styles: ``
 })
@@ -31,10 +30,6 @@ export class MemberListComponent implements OnInit {
     } catch (error) {
       console.log('error :>> ', error);
     }
-  }
-
-  public openMemberForm(memberData: IMember): void {
-    console.log('memberData :>> ', memberData);
   }
 
 }

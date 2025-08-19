@@ -9,6 +9,9 @@ import { ButtonPrimaryComponent } from './atoms/buttons/button-primary.component
 import { FeathericonsModule } from '../shared/icons/feathericons/feathericons.module';
 import { ToolbarComponent } from './molecules/toolbar.component';
 import { FormContainerComponent } from './organisms/form-container.component';
+import { FeatherModule } from 'angular-feather';
+import { allIcons } from 'angular-feather/icons';
+import { ButtonSecondaryComponent } from './atoms/buttons/button-secondary.component';
 
 
 
@@ -19,6 +22,7 @@ import { FormContainerComponent } from './organisms/form-container.component';
     CardContainerComponent,
     ButtonPrimaryComponent,
     FormContainerComponent,
+    ButtonSecondaryComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +30,7 @@ import { FormContainerComponent } from './organisms/form-container.component';
     MatMenuModule,
     MatCardContent,
     MatButtonModule,
-    FeathericonsModule
+    FeatherModule.pick(allIcons),
   ],
   exports: [
     ToolbarComponent,
