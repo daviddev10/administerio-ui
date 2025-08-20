@@ -8,19 +8,23 @@ import { UiModule } from "../../ui/ui.module";
 
 import { AppDataGridModule } from '../../ui/components/data-grid/app-data-grid.module';
 import { MemberFormComponent } from './controllers/member-form.component';
+import { MemberFormViewComponent } from './views/member-form-view/member-form-view.component';
+import { ImageFileComponent } from '../../ui/components/dropify/image-file.component';
 
 
 @NgModule({
   declarations: [
     MemberListComponent,
     MemberListViewComponent,
-    MemberFormComponent
+    MemberFormComponent,
+    MemberFormViewComponent
   ],
   imports: [
     UiModule,
     CommonModule,
     AppDataGridModule,
+    ImageFileComponent,
     MembershipRoutingModule,
-]
+  ]
 })
 export class MembershipModule { }

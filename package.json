@@ -23,6 +23,8 @@
     "ag-grid-angular": "^33.3.2",
     "angular-feather": "^6.5.1",
     "dayjs": "^1.11.13",
+    "dropify": "^0.2.2",
+    "jquery": "^3.7.1",
     "ngx-scrollbar": "^18.0.0",
     "remixicon": "^4.6.0",
     "rxjs": "~7.8.0",

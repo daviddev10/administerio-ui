@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
               mainButtonIcon="ri-save-line"
               (mainButtonClick)="onSaveMember()">
               <div class="content">
-                  
+                  <app-member-form-view></app-member-form-view>
               </div>
             </form-container>`,
   styles: ``

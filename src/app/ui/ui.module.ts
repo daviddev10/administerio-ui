@@ -6,7 +6,6 @@ import { MatCardContent, MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { CardContainerComponent } from './atoms/cards/card-container.component';
 import { ButtonPrimaryComponent } from './atoms/buttons/button-primary.component';
-import { FeathericonsModule } from '../shared/icons/feathericons/feathericons.module';
 import { ToolbarComponent } from './molecules/toolbar.component';
 import { FormContainerComponent } from './organisms/form-container.component';
 import { FeatherModule } from 'angular-feather';
