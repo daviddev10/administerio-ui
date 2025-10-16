@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ColDef, themeQuartz } from 'ag-grid-community';
 import { AG_GRID_LOCALE_ES } from '@ag-grid-community/locale';
 import { OptionGridButtonComponent } from '../buttons/option-grid-button.component';
@@ -11,13 +11,14 @@ import { OptionGridButtonComponent } from '../buttons/option-grid-button.compone
 })
 export class MainDataGridComponent implements OnInit {
 
+  @Output() onDeleteRow = new EventEmitter<any>();
+
   buttonOptions: ColDef = {
     headerName: '',
     width: 50,
     cellRenderer: OptionGridButtonComponent, // Referencia directa al componente
     cellRendererParams: {
-      onClick: (data: any) => this.eliminarFila(data),
-      label: 'Eliminar'
+      onDeleteRow: (data: any) => this.onDeleteRow.emit(data)
     }
   }
   ngOnInit(): void {
@@ -44,10 +45,4 @@ export class MainDataGridComponent implements OnInit {
 
   // Textos personalizados en español
   public localeTex_ES = AG_GRID_LOCALE_ES
-
-
-  eliminarFila(rowData: any): void {
-    console.log('Eliminar fila:', rowData);
-    // Lógica para eliminar (ej: filtrar `rowData` o llamar a una API)
-  }
 }

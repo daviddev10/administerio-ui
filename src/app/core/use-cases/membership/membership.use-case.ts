@@ -32,4 +32,9 @@ export class MembershipUseCase {
         const savedMember = await firstValueFrom(this.membershipService.saveMember(member));
         return savedMember;
     }
+
+    public async onDeleteMember(memberId: number) {
+        const deletedMember = await firstValueFrom(this.membershipService.deleteMember(memberId));
+        return deletedMember;
+    }
 }

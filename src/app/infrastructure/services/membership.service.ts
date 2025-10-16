@@ -25,4 +25,8 @@ export class MembershipService implements MembershipRepository {
   saveMember(member: ISaveMember): Observable<any> {
     return this.http.post(`${this.apiUrl}/create-member`, member);
   }
+
+  deleteMember(memberId: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/remove/${memberId}`);
+  }
 }

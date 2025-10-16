@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { themeAlpine, themeBalham, themeQuartz, type ColDef } from "ag-grid-community";
+import { type ColDef } from "ag-grid-community";
 import { IMember } from '../../../../core/domain/interfaces/membership/member.interface';
 import { FORMAT_DATE } from '../../../../shared/libs/dayjs/format-date.dayjs';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class MemberListViewComponent {
 
   @Input() memberList: IMember[] = [];
+  @Output() onDeleteMember = new EventEmitter<number>();
 
   public columns: ColDef<any>[] = [
     {
@@ -40,7 +41,6 @@ export class MemberListViewComponent {
       headerName: 'Genero',
       width: 100,
       cellRenderer: (params: any) => {
-        console.log('params :>> ', params);
         return params.value == 1 ? 'Masculino' : 'Femenino';
       }
     },
@@ -51,8 +51,11 @@ export class MemberListViewComponent {
 
   constructor(
     private router: Router
-  ) {
+  ) { }
 
+  public onConfirmDelete(member: IMember) {
+    //Todo: Mensaje de confirmación
+    this.onDeleteMember.emit(member.MemberId);
   }
 
   public goToMemberForm(memberId?: number): void {

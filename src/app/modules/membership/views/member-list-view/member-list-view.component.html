@@ -1,5 +1,6 @@
 <form-container formTitle="Miembros" mainButtonIcon="ri-add-circle-line" (mainButtonClick)="goToMemberForm()">
     <div class="content">
-        <app-main-data-grid [dataSource]="memberList" [columnsData]="columns"></app-main-data-grid>
+        <app-main-data-grid [dataSource]="memberList" [columnsData]="columns" (onDeleteRow)="onConfirmDelete($event)">
+        </app-main-data-grid>
     </div>
 </form-container>
