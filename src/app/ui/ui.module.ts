@@ -11,8 +11,18 @@ import { FormContainerComponent } from './organisms/form-container.component';
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
 import { ButtonSecondaryComponent } from './atoms/buttons/button-secondary.component';
-
-
+import { InputTextComponent } from './atoms/inputs/input-text.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { InputTextAreaComponent } from './atoms/inputs/input-text-area.component';
+import { InputDatePickerComponent } from './atoms/inputs/input-date-picker.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { InputRadioComponent } from './atoms/inputs/input-radio.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { InputSelectComponent } from './atoms/inputs/input-select.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -22,6 +32,11 @@ import { ButtonSecondaryComponent } from './atoms/buttons/button-secondary.compo
     ButtonPrimaryComponent,
     FormContainerComponent,
     ButtonSecondaryComponent,
+    InputTextComponent,
+    InputTextAreaComponent,
+    InputDatePickerComponent,
+    InputRadioComponent,
+    InputSelectComponent,
   ],
   imports: [
     CommonModule,
@@ -29,14 +44,29 @@ import { ButtonSecondaryComponent } from './atoms/buttons/button-secondary.compo
     MatMenuModule,
     MatCardContent,
     MatButtonModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatFormFieldModule,
     FeatherModule.pick(allIcons),
+  ],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' } // Calendario en español
   ],
   exports: [
     ToolbarComponent,
+    InputTextComponent,
     ButtonOptionComponent,
+    InputTextAreaComponent,
     CardContainerComponent,
     ButtonPrimaryComponent,
     FormContainerComponent,
+    InputDatePickerComponent,
+    MatNativeDateModule,
+    InputRadioComponent,
+    InputSelectComponent
   ]
 })
 export class UiModule { }

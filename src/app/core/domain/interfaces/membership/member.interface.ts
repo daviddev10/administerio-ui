@@ -15,3 +15,16 @@ export interface IMember {
     Observation: null;
     PhotoUrl: null;
 }
+export interface ISaveMember {
+    MemberName: string;
+    BirthDate: Date;
+    CI: string;
+    Gender: string;
+    CivilStatus: number;
+    CurrentAddress: string;
+    PhoneNumber: string;
+    Email: null;
+    Ocuppation: string;
+    IsBaptized: boolean;
+    Observation: string;
+}

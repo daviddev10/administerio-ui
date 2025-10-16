@@ -18,6 +18,9 @@
 // Buttons
 @use "./assets/scss/custom/buttons.custom.scss" as *;
 
+// Inputs
+@use "./assets/scss/custom/inputs.custom.scss" as *;
+
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
@@ -56,7 +59,7 @@ $trinta-theme: mat.define-theme(
     --fontFamily: "Poppins", sans-serif;
     --headingFontFamily: "Inter", sans-serif;
     --primaryColor: #3761ee;
-    --dangerColor: #ee368c;
+    --dangerColor: #fd3c5f;
     --infoColor: #2db6f5;
     --warningColor: #ffb264;
     --successColor: #2ed47e;

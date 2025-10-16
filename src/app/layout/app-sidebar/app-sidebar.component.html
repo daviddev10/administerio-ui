@@ -23,7 +23,14 @@
                         [routerLinkActiveOptions]="{exact: true}">
                         <i-feather name="home"></i-feather>
                         <span class="title">
-                            Mi Iglesia
+                            Mi iglesia
+                        </span>
+                    </a>
+                    <a routerLink="/miembros" class="sidebar-menu-link" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}">
+                        <i-feather name="users"></i-feather>
+                        <span class="title">
+                            Membresía
                         </span>
                     </a>
                     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true">

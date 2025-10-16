@@ -81,6 +81,11 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "administerio:build:development",
+            "host": "0.0.0.0",
+            "port": 4500
+          },
           "configurations": {
             "production": {
               "buildTarget": "administerio:build:production"

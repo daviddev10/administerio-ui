@@ -65,7 +65,7 @@ export class ImageFileComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.dropifyInstance) {
-      this.dropifyInstance.destroy();
+      // this.dropifyInstance.destroy();
     }
   }
 

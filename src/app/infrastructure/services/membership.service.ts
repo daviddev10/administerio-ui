@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
-import { IMember } from '../../core/domain/interfaces/membership/member.interface';
+import { IMember, ISaveMember } from '../../core/domain/interfaces/membership/member.interface';
 import { MembershipRepository } from '../../core/repositories/membership.repository';
 
 @Injectable({
@@ -22,7 +22,7 @@ export class MembershipService implements MembershipRepository {
     throw new Error('Method not implemented.');
   }
 
-  saveMember(member: IMember): Observable<any> {
-    throw new Error('Method not implemented.');
+  saveMember(member: ISaveMember): Observable<any> {
+    return this.http.post(`${this.apiUrl}/create-member`, member);
   }
 }

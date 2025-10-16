@@ -1,5 +1,36 @@
 <div class="row">
-    <div class="col-4">
-        <app-image-file></app-image-file>
+    <div class="col-md-9">
+        <!-- Nombre completo -->
+        <input-text [InputControl]="memberForm.MemberName" label="Nombre completo" icon="user"></input-text>
+        <div class="row">
+            <!-- Fecha de nacimiento -->
+            <div class="col-md-6">
+                <input-date-picker [InputControl]="memberForm.BirthDate" label="Fecha de nacimiento">
+                </input-date-picker>
+            </div>
+            <!-- Teléfono -->
+            <div class="col-6">
+                <input-text [InputControl]="memberForm.PhoneNumber" label="Teléfono" icon="phone"></input-text>
+            </div>
+        </div>
+        <!-- Dirección -->
+        <input-text-area [InputControl]="memberForm.CurrentAddress" label="Dirección" icon="map-pin"></input-text-area>
+        <div class="row">
+            <!-- Estado civil -->
+            <div class="col-6">
+                <app-input-select label="Estado civil" [InputControl]="memberForm.CivilStatus"
+                    [options]="civilStatus"></app-input-select>
+            </div>
+            <!-- C.I -->
+            <div class="col-6">
+                <input-text [InputControl]="memberForm.CI" label="C.I." icon="hash"></input-text>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <!-- Foto -->
+        <app-image-file></app-image-file><br>
+        <!-- Genero -->
+        <app-input-radio [InputControl]="memberForm.Gender" [options]="genderOptions"></app-input-radio>
     </div>
 </div>

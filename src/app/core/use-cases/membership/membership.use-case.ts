@@ -1,0 +1,35 @@
+import { firstValueFrom } from "rxjs";
+import { MembershipService } from "../../../infrastructure/services/membership.service";
+import { IMember, ISaveMember } from "../../domain/interfaces/membership/member.interface";
+
+export class MembershipUseCase {
+
+    private membershipService: MembershipService;
+
+    constructor(service: MembershipService) {
+        this.membershipService = service;
+    }
+
+    public getMemberSaveData(data: any): ISaveMember {
+        const memberData: ISaveMember = { //Todo: Completar los campos nulos
+            MemberName: data.MemberName,
+            BirthDate: data.BirthDate,
+            CI: data.CI,
+            Gender: data.Gender,
+            CivilStatus: data.CivilStatus,
+            CurrentAddress: data.CurrentAddress,
+            PhoneNumber: data.PhoneNumber,
+            Email: null,
+            Ocuppation: null,
+            IsBaptized: true, //Todo: Completar
+            Observation: null,
+        }
+
+        return memberData;
+    }
+
+    public async onSaveMember(member: ISaveMember) {
+        const savedMember = await firstValueFrom(this.membershipService.saveMember(member));
+        return savedMember;
+    }
+}

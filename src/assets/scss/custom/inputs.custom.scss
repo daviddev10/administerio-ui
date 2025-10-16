@@ -1,0 +1,16 @@
+.mat-mdc-form-field.ng-invalid.ng-touched {
+    .mat-mdc-text-field-wrapper {
+        border: 1px solid var(--dangerColor) !important;
+    }
+    i-feather {
+        color: var(--dangerColor) !important;
+    }
+    .mdc-floating-label {
+        color: var(--dangerColor) !important;
+    }
+}
+
+// Radio buttons
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+    margin-left: 20px;
+}
