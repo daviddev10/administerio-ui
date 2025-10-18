@@ -58,8 +58,8 @@ export class MemberListViewComponent {
     this.onDeleteMember.emit(member.MemberId);
   }
 
-  public goToMemberForm(memberId?: number): void {
-    const memberFormUrl = memberId ? `miembros/editar/${memberId}` : `miembros/nuevo`;
+  public goToMemberForm(memberData?:IMember): void {
+    const memberFormUrl = memberData ? `miembros/editar/${memberData.MemberId}` : `miembros/nuevo`;
     this.router.navigate([memberFormUrl]);
   }
 

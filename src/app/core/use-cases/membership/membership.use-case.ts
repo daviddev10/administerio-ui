@@ -33,6 +33,11 @@ export class MembershipUseCase {
         return savedMember;
     }
 
+    public async getMemberById(memberId: number): Promise<IMember> {
+        const memberData = await firstValueFrom(this.membershipService.getMemberById(memberId));
+        return memberData;
+    }
+
     public async onDeleteMember(memberId: number) {
         const deletedMember = await firstValueFrom(this.membershipService.deleteMember(memberId));
         return deletedMember;

@@ -5,7 +5,8 @@ import { MemberFormComponent } from './controllers/member-form.component';
 
 const routes: Routes = [
   { path: '', component: MemberListComponent },
-  { path: 'nuevo', component: MemberFormComponent }
+  { path: 'nuevo', component: MemberFormComponent },
+  { path: 'editar/:id', component: MemberFormComponent }
 ];
 
 @NgModule({

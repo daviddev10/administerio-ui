@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
@@ -19,7 +19,7 @@ export class MembershipService implements MembershipRepository {
   }
 
   getMemberById(memberId: number): Observable<IMember> {
-    throw new Error('Method not implemented.');
+    return this.http.get<IMember>(`${this.apiUrl}/info/${memberId}`);
   }
 
   saveMember(member: ISaveMember): Observable<any> {

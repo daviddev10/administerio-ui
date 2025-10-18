@@ -11,6 +11,7 @@ import { OptionGridButtonComponent } from '../buttons/option-grid-button.compone
 })
 export class MainDataGridComponent implements OnInit {
 
+  @Output() onEditRow = new EventEmitter<any>();
   @Output() onDeleteRow = new EventEmitter<any>();
 
   buttonOptions: ColDef = {
@@ -18,6 +19,7 @@ export class MainDataGridComponent implements OnInit {
     width: 50,
     cellRenderer: OptionGridButtonComponent, // Referencia directa al componente
     cellRendererParams: {
+      onEditRow: (data: any) => this.onEditRow.emit(data),
       onDeleteRow: (data: any) => this.onDeleteRow.emit(data)
     }
   }

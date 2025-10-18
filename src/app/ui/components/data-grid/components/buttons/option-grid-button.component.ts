@@ -9,7 +9,7 @@ import { ICellEditorRendererParams } from 'ag-grid-community';
                 <i class="ri-more-2-fill"></i>
              </button>
              <mat-menu #cardHeaderMenu="matMenu" class="card-header-menu" xPosition="before">
-                <button mat-menu-item>
+                <button mat-menu-item (click)="onEdit($event)">
                     <i class="ri-edit-2-line"></i> Editar
                 </button>
                 <button mat-menu-item (click)="onDelete($event)">
@@ -43,6 +43,12 @@ export class OptionGridButtonComponent implements ICellEditorRendererAngularComp
     event.stopPropagation();
     if (this.params.onDeleteRow) {
       this.params.onDeleteRow(this.params.data); // Envía los datos de la fila
+    }
+  }
+  onEdit(event: MouseEvent): void {
+    event.stopPropagation();
+    if (this.params.onEditRow) {
+      this.params.onEditRow(this.params.data); // Envía los datos de la fila
     }
   }
 
