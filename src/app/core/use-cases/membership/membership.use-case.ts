@@ -28,8 +28,13 @@ export class MembershipUseCase {
         return memberData;
     }
 
-    public async onSaveMember(member: ISaveMember) {
-        const savedMember = await firstValueFrom(this.membershipService.saveMember(member));
+    public async onSaveMember(member: ISaveMember): Promise<IMember> {
+        const savedMember = await firstValueFrom(this.membershipService.postSaveMember(member));
+        return savedMember;
+    }
+
+    public async onUpdateMember(member: ISaveMember, memberId: number): Promise<IMember> {
+        const savedMember = await firstValueFrom(this.membershipService.postSaveMember(member));
         return savedMember;
     }
 
@@ -41,5 +46,10 @@ export class MembershipUseCase {
     public async onDeleteMember(memberId: number) {
         const deletedMember = await firstValueFrom(this.membershipService.deleteMember(memberId));
         return deletedMember;
+    }
+
+    public async onSaveMemberPhoto(photo: File, memberId: number) {
+        const savedPhoto = await firstValueFrom(this.membershipService.postUpdatePhoto(photo, memberId));
+        return savedPhoto;
     }
 }

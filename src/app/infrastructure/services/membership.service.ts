@@ -22,11 +22,17 @@ export class MembershipService implements MembershipRepository {
     return this.http.get<IMember>(`${this.apiUrl}/info/${memberId}`);
   }
 
-  saveMember(member: ISaveMember): Observable<any> {
-    return this.http.post(`${this.apiUrl}/create-member`, member);
+  postSaveMember(member: ISaveMember): Observable<IMember> {
+    return this.http.post<IMember>(`${this.apiUrl}/create-member`, member);
   }
 
   deleteMember(memberId: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/remove/${memberId}`);
+  }
+
+  postUpdatePhoto(memberPhoto: File, memberId: number): Observable<IMember> {
+    const formData = new FormData();
+    formData.append('photo', memberPhoto);
+    return this.http.post<IMember>(`${this.apiUrl}/update-photo/${memberId}`, formData);
   }
 }

@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-md-3">
         <!-- Foto -->
-        <app-image-file></app-image-file><br>
+        <app-image-file *ngIf="showImageComponent" [defaultFile]="memberPhoto"
+            (onSelectedImage)="onSelectedMemberPhoto.emit($event)">
+        </app-image-file><br>
         <!-- Genero -->
         <app-input-radio [InputControl]="memberForm.Gender" [options]="genderOptions"></app-input-radio>
     </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MemberForm } from '../../shared/forms/member.form';
 import { IBaseInfo, IRadioValue } from '../../../../core/shared/interfaces/common.interface';
 
@@ -11,6 +11,10 @@ import { IBaseInfo, IRadioValue } from '../../../../core/shared/interfaces/commo
 export class MemberFormViewComponent {
 
   @Input() memberForm!: MemberForm;
+  @Input() memberPhoto: string | File = null;
+  @Output() onSelectedMemberPhoto = new EventEmitter<File>();
+
+  public showImageComponent: boolean = true;
 
   public genderOptions: IRadioValue[] = [
     { Value: 1, Name: 'Masculino' },
@@ -23,4 +27,10 @@ export class MemberFormViewComponent {
     { Id: 3, Name: 'Viudo(a)' },
   ];
 
+  public reloadImageComponent(): void {
+    this.showImageComponent = false;
+    setTimeout(() => {
+      this.showImageComponent = true;
+    });
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MemberForm } from '../shared/forms/member.form';
 import { FormBuilder } from '@angular/forms';
 import { ISaveMember } from '../../../core/domain/interfaces/membership/member.interface';
@@ -6,6 +6,7 @@ import { MembershipUseCase } from '../../../core/use-cases/membership/membership
 import { MembershipService } from '../../../infrastructure/services/membership.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { MemberFormViewComponent } from '../views/member-form-view/member-form-view.component';
 
 @Component({
   selector: 'app-member-form',
@@ -17,7 +18,10 @@ import { ActivatedRoute } from '@angular/router';
               (mainButtonClick)="onSaveMember()">
               <div class="content">
                   <app-member-form-view
-                    [memberForm]="memberForm">
+                    #memberFormView
+                    [memberForm]="memberForm"
+                    [memberPhoto]="memberPhoto"
+                    (onSelectedMemberPhoto)="onSelectedMemberPhoto($event)">
                   </app-member-form-view>
                   <pre>{{ memberForm.form.value | json }}</pre>
               </div>
@@ -26,7 +30,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MemberFormComponent implements OnInit {
 
+  @ViewChild('memberFormView') memberFormView: MemberFormViewComponent;
+
   public memberForm: MemberForm;
+  public memberPhoto: string | File = null;
+
   private editId: number = null;
   private ucMembership: MembershipUseCase;
 
@@ -48,9 +56,18 @@ export class MemberFormComponent implements OnInit {
   public async onSaveMember(): Promise<void> {
     if (this.memberForm.form.valid) {
       try {
-        const memberData: ISaveMember = this.ucMembership.getMemberSaveData(this.memberForm.form.getRawValue());
-        // Guardar datos
-        await this.ucMembership.onSaveMember(memberData);
+        const memberDataModel: ISaveMember = this.ucMembership.getMemberSaveData(this.memberForm.form.getRawValue());
+        if (this.editId) {
+          const updateMember = await this.ucMembership.onSaveMember(memberDataModel);
+
+        } else {
+          // Guardar datos
+          const savedMember = await this.ucMembership.onSaveMember(memberDataModel);
+          // Registrar la foto del miembro
+          if (this.memberPhoto && typeof this.memberPhoto !== 'string') { // Exista la imagen y sea de tipo FILE
+            await this.ucMembership.onSaveMemberPhoto(this.memberPhoto, savedMember.MemberId);
+          }
+        }
         this.location.back();
       } catch (error) {
         console.log('error :>> ', error);
@@ -64,8 +81,20 @@ export class MemberFormComponent implements OnInit {
     try {
       const memberData = await this.ucMembership.getMemberById(this.editId);
       this.memberForm.form.patchValue(memberData);
+      // Actualizado de foto
+      if (memberData.PhotoUrl) this.memberPhoto = memberData.PhotoUrl;
+      this.memberFormView.reloadImageComponent();
+
     } catch (error) {
       console.log('error :>> ', error);
+    }
+  }
+
+  public onSelectedMemberPhoto(memberPhoto: File): void {
+    if (memberPhoto) {
+      this.memberPhoto = memberPhoto;
+    } else {
+      this.memberPhoto = null;
     }
   }
 

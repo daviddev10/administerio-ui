@@ -12,7 +12,7 @@ export class ImageFileComponent implements AfterViewInit, OnDestroy {
 
   @Input() acceptedFiles = '';          // Ej: 'image/*,.pdf'
   @Input() maxFileSize = 0;             // en MB
-  @Input() defaultFile: string | null = null; // archivo inicial
+  @Input() defaultFile: string | File = null; // archivo inicial
   @Output() onSelectedImage = new EventEmitter<File | null>();
 
   @ViewChild('fileInput', { static: true }) fileInput!: ElementRef<HTMLInputElement>;

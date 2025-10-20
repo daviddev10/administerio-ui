@@ -4,5 +4,5 @@ import { IMember, ISaveMember } from "../domain/interfaces/membership/member.int
 export abstract class MembershipRepository {
     abstract getAllMembers(): Observable<IMember[]>;
     abstract getMemberById(memberId: number): Observable<IMember>;
-    abstract saveMember(member: ISaveMember): Observable<any>;
+    abstract postSaveMember(member: ISaveMember): Observable<any>;
 }
