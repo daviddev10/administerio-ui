@@ -10,6 +10,8 @@ import { MemberForm } from '../../modules/membership/shared/forms/member.form';
                       [title]="formTitle"
                       [mainButtonLabel]="mainButtonLabel"
                       [mainButtonIcon]="mainButtonIcon"
+                      [secondButtonLabel]="secondButtonLabel"
+                      [secondButtonIcon]="secondButtonIcon"
                       (mainButtonClick)="mainButtonClick.emit($event)">
                     </app-toolbar>
                 </mat-card-header>
@@ -23,6 +25,10 @@ import { MemberForm } from '../../modules/membership/shared/forms/member.form';
 export class FormContainerComponent {
   @Input() mainButtonIcon: string = 'ri-save-line';
   @Input() mainButtonLabel: string = 'Crear nuevo';
+
+  @Input() secondButtonLabel: string = 'Atrás';
+  @Input() secondButtonIcon: string = 'ri-arrow-left-line';
+
   @Input({ required: true }) formTitle: string = 'Nuevo formulario';
 
   @Output() mainButtonClick = new EventEmitter<any>();

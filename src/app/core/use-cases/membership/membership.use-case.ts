@@ -34,7 +34,7 @@ export class MembershipUseCase {
     }
 
     public async onUpdateMember(member: ISaveMember, memberId: number): Promise<IMember> {
-        const savedMember = await firstValueFrom(this.membershipService.postSaveMember(member));
+        const savedMember = await firstValueFrom(this.membershipService.patchUpdateMember(member, memberId));
         return savedMember;
     }
 

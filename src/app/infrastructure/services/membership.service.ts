@@ -25,6 +25,9 @@ export class MembershipService implements MembershipRepository {
   postSaveMember(member: ISaveMember): Observable<IMember> {
     return this.http.post<IMember>(`${this.apiUrl}/create-member`, member);
   }
+  patchUpdateMember(member: ISaveMember, memberId: number): Observable<IMember> {
+    return this.http.patch<IMember>(`${this.apiUrl}/update/${memberId}`, member);
+  }
 
   deleteMember(memberId: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/remove/${memberId}`);

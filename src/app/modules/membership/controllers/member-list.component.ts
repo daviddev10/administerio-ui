@@ -3,6 +3,7 @@ import { MembershipService } from '../../../infrastructure/services/membership.s
 import { firstValueFrom } from 'rxjs';
 import { IMember } from '../../../core/domain/interfaces/membership/member.interface';
 import { MembershipUseCase } from '../../../core/use-cases/membership/membership.use-case';
+import { AlertService } from '../../../shared/services/alert.service';
 
 @Component({
   selector: 'app-member-list',
@@ -19,6 +20,7 @@ export class MemberListComponent implements OnInit {
   private ucMemberShip: MembershipUseCase;
 
   constructor(
+    private alertService: AlertService,
     private membershipService: MembershipService
   ) {
     this.ucMemberShip = new MembershipUseCase(this.membershipService);
@@ -30,9 +32,11 @@ export class MemberListComponent implements OnInit {
 
   private async loadMemberList(): Promise<void> {
     try {
+      this.alertService.startLoading();
       this.memberList = await firstValueFrom(this.membershipService.getAllMembers());
-
+      this.alertService.stopLoading();
     } catch (error) {
+      this.alertService.stopLoading();
       console.log('error :>> ', error);
     }
   }

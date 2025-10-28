@@ -7,6 +7,7 @@ import { MembershipService } from '../../../infrastructure/services/membership.s
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MemberFormViewComponent } from '../views/member-form-view/member-form-view.component';
+import { AlertService } from '../../../shared/services/alert.service';
 
 @Component({
   selector: 'app-member-form',
@@ -14,6 +15,8 @@ import { MemberFormViewComponent } from '../views/member-form-view/member-form-v
   template: `<form-container 
               formTitle="Registrar miembro"
               mainButtonLabel="Guardar"
+              secondButtonLabel="Cancelar"
+              secondButtonIcon="ri-prohibited-2-line"
               mainButtonIcon="ri-save-line"
               (mainButtonClick)="onSaveMember()">
               <div class="content">
@@ -41,6 +44,7 @@ export class MemberFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private location: Location,
+    private alertService: AlertService,
     private activatedRoute: ActivatedRoute,
     private membershipService: MembershipService
   ) {
@@ -56,9 +60,11 @@ export class MemberFormComponent implements OnInit {
   public async onSaveMember(): Promise<void> {
     if (this.memberForm.form.valid) {
       try {
+        this.alertService.startLoading();
         const memberDataModel: ISaveMember = this.ucMembership.getMemberSaveData(this.memberForm.form.getRawValue());
         if (this.editId) {
-          const updateMember = await this.ucMembership.onSaveMember(memberDataModel);
+          const updateMember = await this.ucMembership.onUpdateMember(memberDataModel, this.editId);
+          console.log('updateMember :>> ', updateMember);
 
         } else {
           // Guardar datos
@@ -68,8 +74,10 @@ export class MemberFormComponent implements OnInit {
             await this.ucMembership.onSaveMemberPhoto(this.memberPhoto, savedMember.MemberId);
           }
         }
+        this.alertService.stopLoading();
         this.location.back();
       } catch (error) {
+        this.alertService.stopLoading();
         console.log('error :>> ', error);
       }
     } else {
@@ -79,13 +87,15 @@ export class MemberFormComponent implements OnInit {
 
   private async getMemberData(): Promise<void> {
     try {
+      this.alertService.startLoading();
       const memberData = await this.ucMembership.getMemberById(this.editId);
       this.memberForm.form.patchValue(memberData);
       // Actualizado de foto
       if (memberData.PhotoUrl) this.memberPhoto = memberData.PhotoUrl;
       this.memberFormView.reloadImageComponent();
-
+      this.alertService.stopLoading();
     } catch (error) {
+      this.alertService.stopLoading();
       console.log('error :>> ', error);
     }
   }

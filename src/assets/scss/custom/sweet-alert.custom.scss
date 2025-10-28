@@ -1,0 +1,19 @@
+/* Panel de carga */
+.swal-loading-popup {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 1rem;
+    width: 18rem !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    .swal2-title {
+        font-size: 1.2rem !important;
+        padding-top: 8px;
+    }
+    .swal2-html-container {
+        font-size: 0.8rem;
+        padding-top: 3px;
+    }
+    .swal2-loading {
+        margin-top: 6px;
+    }
+}
