@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ILoginFields } from '../shared/interfaces/login.interface';
 import { LoginForm } from '../shared/forms/login.form';
-import { ISaveUser, IUserLogin } from '../shared/interfaces/user.interface';
-import { Subscription } from 'rxjs';
+import { IUserLogin } from '../shared/interfaces/user.interface';
+import { finalize, Subscription } from 'rxjs';
 import { UserService } from '../shared/services/user.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -12,7 +15,7 @@ import { UserService } from '../shared/services/user.service';
   template: `<app-login-form-view
               [isLogin]="true"
               [loginForm]="loginForm"
-              [isLoading]="isLoading"
+              [isLoading]="isLoading()"
               [pageFields]="loginPageFields"
               (onSendData)="onLoginUser($event)">
              </app-login-form-view>`,
@@ -20,8 +23,8 @@ import { UserService } from '../shared/services/user.service';
 })
 export class LoginFormComponent {
 
-  public isLoading: boolean = false;
-
+  public loginForm: LoginForm;
+  public isLoading = signal<boolean>(false);
   public loginPageFields: ILoginFields = {
     titleForm: 'INICIAR SESIÓN',
     preLinkText: '¿No tienes una cuenta?',
@@ -32,32 +35,37 @@ export class LoginFormComponent {
     mainButtonText: 'INGRESAR'
   }
 
-  public loginForm: LoginForm;
-
-  private subscription$ = new Subscription();
+  private destroyRef = inject(DestroyRef);
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
+    private authService: AuthService,
     private userService: UserService
   ) {
     this.loginForm = new LoginForm(this.fb);
   }
 
   public onLoginUser(loginData: IUserLogin): void {
-    this.isLoading = true;
-    const subs = this.userService.postLoginUser(loginData).subscribe((res) => {
-      console.log('res :>> ', res);
-      this.isLoading = false;
-    }, error => {
-      this.isLoading = false;
-      console.log('error :>> ', error);
-    });
-
-    this.subscription$.add(subs);
+    if (this.isLoading()) return; // Evitar múltiples clics
+    this.isLoading.set(true);
+    this.userService.postLoginUser(loginData)
+      .pipe(
+        takeUntilDestroyed(this.destroyRef), // Gestión automática de memoria
+        finalize(() => this.isLoading.set(false)) // Se ejecuta tanto en éxito como en error
+      )
+      .subscribe({
+        next: (res) => {
+          this.onSuccessLogin(res.AccessToken);
+        }
+      });
   }
 
-  ngOnDestroy(): void {
-    this.subscription$.unsubscribe();
+  private onSuccessLogin(token: string): void {
+    // 1. Guardamos el token
+    this.authService.saveToken(token);
+    // 2. Redirigimos al inicio
+    this.router.navigate(['/']);
   }
 
 }

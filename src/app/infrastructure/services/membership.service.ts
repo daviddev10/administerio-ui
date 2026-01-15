@@ -3,12 +3,11 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { IMember, ISaveMember } from '../../core/domain/interfaces/membership/member.interface';
-import { MembershipRepository } from '../../core/repositories/membership.repository';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MembershipService implements MembershipRepository {
+export class MembershipService {
 
   private apiUrl = `${environment.apiUrl}/member`;
 

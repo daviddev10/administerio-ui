@@ -1,14 +1,8 @@
-<div
-    class="header-area bg-white box-shadow transition"
-    [ngClass]="{'active': isToggled}"
->
+<div class="header-area bg-white box-shadow transition" [ngClass]="{'active': isToggled}">
     <div class="d-md-flex align-items-center justify-content-between">
         <div class="header-left-side d-flex align-items-center">
-            <div
-                class="burger-menu position-relative transition lh-1"
-                [ngClass]="{'active': isToggled}"
-                (click)="toggle()"
-            >
+            <div class="burger-menu position-relative transition lh-1" [ngClass]="{'active': isToggled}"
+                (click)="toggle()">
                 <i-feather name="align-left"></i-feather>
             </div>
             <form class="search-box position-relative">
@@ -20,12 +14,8 @@
         </div>
         <ul class="header-right-side d-flex align-items-center m-0 p-0 list-unstyled">
             <li>
-                <button
-                    mat-button
-                    (click)="toggleTheme()"
-                    class="dark-swtich-btn"
-                    [class.active]="toggleService.isDark()"
-                >
+                <button mat-button (click)="toggleTheme()" class="dark-swtich-btn"
+                    [class.active]="toggleService.isDark()">
                     <i-feather name="moon"></i-feather>
                 </button>
             </li>
@@ -39,7 +29,7 @@
                 <mat-menu class="messages-menu-dropdown" #messagesMenu="matMenu" xPosition="before">
                     <div class="title d-flex align-items-center justify-content-between">
                         <span class="fw-medium fs-16">
-                            Mensajes 
+                            Mensajes
                             <span class="text-body fw-normal fs-15">
                                 (05)
                             </span>
@@ -57,7 +47,8 @@
                             <span class="message d-block text-body">
                                 Hey Victor! Could you please...
                             </span>
-                            <a routerLink="/chat" class="d-block left-0 top-0 bottom-0 right-0 z-1 position-absolute"></a>
+                            <a routerLink="/chat"
+                                class="d-block left-0 top-0 bottom-0 right-0 z-1 position-absolute"></a>
                             <span class="unread d-inline-block rounded-circle bg-primary position-absolute"></span>
                         </li>
                         <li class="position-relative">
@@ -68,17 +59,19 @@
                             <span class="message d-block text-body">
                                 How are you Angela? Would you...
                             </span>
-                            <a routerLink="/chat" class="d-block left-0 top-0 bottom-0 right-0 z-1 position-absolute"></a>
+                            <a routerLink="/chat"
+                                class="d-block left-0 top-0 bottom-0 right-0 z-1 position-absolute"></a>
                         </li>
                         <li class="position-relative">
                             <img src="images/users/user3.jpg" class="rounded-circle position-absolute" alt="user">
                             <span class="sub-title d-block fw-medium">
-                                Brad Traversy  <span class="text-body fw-normal">2 days ago</span>
+                                Brad Traversy <span class="text-body fw-normal">2 days ago</span>
                             </span>
                             <span class="message d-block text-body">
                                 Hey Brad Traversy! Could you please...
                             </span>
-                            <a routerLink="/chat" class="d-block left-0 top-0 bottom-0 right-0 z-1 position-absolute"></a>
+                            <a routerLink="/chat"
+                                class="d-block left-0 top-0 bottom-0 right-0 z-1 position-absolute"></a>
                         </li>
                     </ul>
                     <div class="menu-footer text-center">
@@ -91,7 +84,8 @@
             <li>
                 <button mat-button [matMenuTriggerFor]="notificationsMenu" class="notifications-menu-btn">
                     <i-feather name="bell"></i-feather>
-                    <span class="trinta-badge fw-bold bg-primary text-center text-white rounded-circle d-flex align-items-center justify-content-center">
+                    <span
+                        class="trinta-badge fw-bold bg-primary text-center text-white rounded-circle d-flex align-items-center justify-content-center">
                         1
                     </span>
                 </button>
@@ -109,7 +103,8 @@
                     </div>
                     <ul class="menu-body p-0 mt-0 list-unstyled">
                         <li class="position-relative">
-                            <div class="icon rounded-circle d-flex align-items-center justify-content-center position-absolute text-center transition">
+                            <div
+                                class="icon rounded-circle d-flex align-items-center justify-content-center position-absolute text-center transition">
                                 <i class="material-symbols-outlined">
                                     sms
                                 </i>
@@ -120,11 +115,13 @@
                             <span class="time d-block text-body">
                                 2 hrs ago
                             </span>
-                            <a routerLink="/notifications" class="d-block left-0 top-0 bottom-0 right-0 z-1 position-absolute"></a>
+                            <a routerLink="/notifications"
+                                class="d-block left-0 top-0 bottom-0 right-0 z-1 position-absolute"></a>
                             <span class="unread d-inline-block rounded-circle bg-primary position-absolute"></span>
                         </li>
                         <li class="position-relative">
-                            <div class="icon rounded-circle d-flex align-items-center justify-content-center position-absolute text-center transition">
+                            <div
+                                class="icon rounded-circle d-flex align-items-center justify-content-center position-absolute text-center transition">
                                 <i class="material-symbols-outlined">
                                     person
                                 </i>
@@ -135,11 +132,13 @@
                             <span class="time d-block text-body">
                                 3 hrs ago
                             </span>
-                            <a routerLink="/notifications" class="d-block left-0 top-0 bottom-0 right-0 z-1 position-absolute"></a>
+                            <a routerLink="/notifications"
+                                class="d-block left-0 top-0 bottom-0 right-0 z-1 position-absolute"></a>
                             <span class="unread d-inline-block rounded-circle bg-primary position-absolute"></span>
                         </li>
                         <li class="position-relative">
-                            <div class="icon rounded-circle d-flex align-items-center justify-content-center position-absolute text-center transition">
+                            <div
+                                class="icon rounded-circle d-flex align-items-center justify-content-center position-absolute text-center transition">
                                 <i class="material-symbols-outlined">
                                     mark_email_unread
                                 </i>
@@ -150,21 +149,25 @@
                             <span class="time d-block text-body">
                                 1 day ago
                             </span>
-                            <a routerLink="/notifications" class="d-block left-0 top-0 bottom-0 right-0 z-1 position-absolute"></a>
+                            <a routerLink="/notifications"
+                                class="d-block left-0 top-0 bottom-0 right-0 z-1 position-absolute"></a>
                         </li>
                     </ul>
                     <div class="menu-footer text-center">
-                        <a routerLink="/notifications" class="text-primary text-decoration-underline d-inline-block fw-medium">
+                        <a routerLink="/notifications"
+                            class="text-primary text-decoration-underline d-inline-block fw-medium">
                             Ver todas las notificaciones
                         </a>
                     </div>
                 </mat-menu>
             </li>
+            <!-- Calendario -->
             <li>
                 <div class="date-btn position-relative">
                     <i-feather name="calendar"></i-feather> {{ formattedDate }}
                 </div>
             </li>
+            <!-- Idiomas -->
             <li>
                 <button mat-button [matMenuTriggerFor]="languageMenu" class="language-menu-btn">
                     <img src="images/flags/eng.svg" alt="flag"> ENG
@@ -173,40 +176,41 @@
                     <span class="title fw-medium fs-16 d-block">
                         Seleccionar lenguaje
                     </span>
-                        <ul class="menu-body pl-0 mb-0 mt-0 list-unstyled">
-                            <li>
-                                <button mat-button>
-                                    <img src="images/flags/eng.svg" alt="flag">
-                                    ENG
-                                </button>
-                            </li>
-                            <li>
-                                <button mat-button>
-                                    <img src="images/flags/chn.svg" alt="flag">
-                                    CHN
-                                </button>
-                            </li>
-                            <li>
-                                <button mat-button>
-                                    <img src="images/flags/spn.svg" alt="flag">
-                                    SPN
-                                </button>
-                            </li>
-                            <li>
-                                <button mat-button>
-                                    <img src="images/flags/por.svg" alt="flag">
-                                    POR
-                                </button>
-                            </li>
-                            <li>
-                                <button mat-button>
-                                    <img src="images/flags/rus.svg" alt="flag">
-                                    RUS
-                                </button>
-                            </li>
-                        </ul>
+                    <ul class="menu-body pl-0 mb-0 mt-0 list-unstyled">
+                        <li>
+                            <button mat-button>
+                                <img src="images/flags/eng.svg" alt="flag">
+                                ENG
+                            </button>
+                        </li>
+                        <li>
+                            <button mat-button>
+                                <img src="images/flags/chn.svg" alt="flag">
+                                CHN
+                            </button>
+                        </li>
+                        <li>
+                            <button mat-button>
+                                <img src="images/flags/spn.svg" alt="flag">
+                                SPN
+                            </button>
+                        </li>
+                        <li>
+                            <button mat-button>
+                                <img src="images/flags/por.svg" alt="flag">
+                                POR
+                            </button>
+                        </li>
+                        <li>
+                            <button mat-button>
+                                <img src="images/flags/rus.svg" alt="flag">
+                                RUS
+                            </button>
+                        </li>
+                    </ul>
                 </mat-menu>
             </li>
+            <!-- Perfil -->
             <li>
                 <button mat-button [matMenuTriggerFor]="profileMenu" class="profile-menu-btn">
                     <img src="images/admin.jpg" class="rounded-circle" alt="admin-image">
@@ -216,10 +220,10 @@
                         <img src="images/admin.jpg" class="rounded-circle" alt="admin-image">
                         <div class="title">
                             <a routerLink="/my-profile" class="d-inline-block fw-medium">
-                                Marcus Davis
+                                Daniel David
                             </a>
                             <span class="designation d-block text-body">
-                                Admin
+                                Administrador
                             </span>
                         </div>
                     </div>
@@ -228,29 +232,35 @@
                             <i class="material-symbols-outlined">
                                 person
                             </i>
-                            My Profile
-                            <a routerLink="/my-profile" class="link-btn d-block position-absolute left-0 right-0 top-0 bottom-0 z-1"></a>
+                            Mi perfil
+                            <a routerLink="/my-profile"
+                                class="link-btn d-block position-absolute left-0 right-0 top-0 bottom-0 z-1"></a>
                         </li>
                         <li class="position-relative transition fw-medium">
                             <i class="material-symbols-outlined">
                                 settings
                             </i>
-                            Settings
-                            <a routerLink="/settings" class="link-btn d-block position-absolute left-0 right-0 top-0 bottom-0 z-1"></a>
+                            Configuraciones
+                            <a routerLink="/settings"
+                                class="link-btn d-block position-absolute left-0 right-0 top-0 bottom-0 z-1"></a>
                         </li>
                         <li class="position-relative transition fw-medium">
                             <i class="material-symbols-outlined">
                                 info
                             </i>
-                            Support
-                            <a routerLink="/settings/connections" class="link-btn d-block position-absolute left-0 right-0 top-0 bottom-0 z-1"></a>
+                            Soporte
+                            <a routerLink="/settings/connections"
+                                class="link-btn d-block position-absolute left-0 right-0 top-0 bottom-0 z-1"></a>
                         </li>
                         <li class="position-relative transition fw-medium">
                             <i class="material-symbols-outlined">
                                 logout
                             </i>
-                            Logout
-                            <a routerLink="/authentication/logout" class="link-btn d-block position-absolute left-0 right-0 top-0 bottom-0 z-1"></a>
+                            Cerrar sesión
+                            <a href="javascript:void(0)"
+                                class="link-btn d-block position-absolute left-0 right-0 top-0 bottom-0 z-1"
+                                (click)="onLogout($event)">
+                            </a>
                         </li>
                     </ul>
                 </mat-menu>

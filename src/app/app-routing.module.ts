@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
+import { privateGuard } from './core/guards/private.guard';
 
 const routes: Routes = [
   {
     path: '', component: AppLayoutComponent,
+    canActivate: [privateGuard],
     children: [
       { path: 'miembros', loadChildren: () => import('./modules/membership/membership.module').then(m => m.MembershipModule) },
       // { path: 'uikit', loadChildren: () => import('./demo/components/uikit/uikit.module').then(m => m.UIkitModule) },
