@@ -1,0 +1,55 @@
+<div class="sign-in-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="trinta-form ml-auto mr-auto bg-white border-radius">
+                <div class="title text-center">
+                    <h3>{{pageFields.titleForm}}</h3>
+                    <p class="text-black fs-15"> {{pageFields.preLinkText}}
+                        <a [routerLink]="pageFields.linkUrl" class="text-primary fw-medium">
+                            {{pageFields.linkText}}
+                        </a>
+                    </p>
+                </div>
+                <div class="signin-with-socials">
+                    <button type="button" mat-button>
+                        <img src="images/icons/google2.svg" alt="google"> {{pageFields.googleButtonText}}
+                    </button>
+                    <div class="or text-center position-relative z-1 text-body">
+                        <span class="d-inline-block bg-white"> {{pageFields.dividerText}} </span>
+                    </div>
+                </div>
+                <form [formGroup]="loginForm.form" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label class="label d-block fw-medium mb-10">
+                            Correo electrónico
+                        </label>
+                        <input-text label="Ingresa tu correo" icon="mail" [InputControl]="loginForm.controls.Email"
+                            [setFocus]="true">
+                        </input-text>
+                    </div>
+                    <div class="form-group">
+                        <label class="label d-block fw-medium mb-10">
+                            Contraseña
+                        </label>
+                        <input-password [InputControl]="loginForm.controls.Password"></input-password>
+                    </div>
+                    <div class="info d-flex justify-content-between align-items-center">
+                        <mat-checkbox color="primary">
+                            Recuérdeme
+                        </mat-checkbox>
+                        <a routerLink="/authentication/forgot-password" class="d-inline-block text-primary">
+                            ¿Olvidaste tu contraseña?
+                        </a>
+                    </div>
+                    <button mat-button type="submit"
+                        [disabled]="loginForm.controls.Email.invalid || loginForm.controls.Password.invalid || isLoading">
+                        @if (isLoading) {
+                        <i class="ri-loader-4-line spinner"></i>
+                        }
+                        {{pageFields.mainButtonText}}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

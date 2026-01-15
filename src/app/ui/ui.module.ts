@@ -23,6 +23,7 @@ import { InputRadioComponent } from './atoms/inputs/input-radio.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { InputSelectComponent } from './atoms/inputs/input-select.component';
 import { MatSelectModule } from '@angular/material/select';
+import { InputPasswordComponent } from './atoms/inputs/input-password.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MatSelectModule } from '@angular/material/select';
     InputDatePickerComponent,
     InputRadioComponent,
     InputSelectComponent,
+    InputPasswordComponent,
   ],
   imports: [
     CommonModule,
@@ -62,6 +64,7 @@ import { MatSelectModule } from '@angular/material/select';
     InputTextAreaComponent,
     CardContainerComponent,
     ButtonPrimaryComponent,
+    InputPasswordComponent,
     FormContainerComponent,
     InputDatePickerComponent,
     MatNativeDateModule,

@@ -17,8 +17,11 @@ import { CommonModule } from '@angular/common';
 import { FeathericonsModule } from './shared/icons/feathericons/feathericons.module';
 import { AppHeaderComponent } from './layout/app-header/app-header.component';
 import { AppFooterComponent } from './layout/app-footer/app-footer.component';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
+import { authInterceptor } from './core/interceptors/auth.interceptor';
+import { errorInterceptor } from './core/interceptors/error.interceptor';
+import { NgxSonnerToaster } from 'ngx-sonner';
 
 
 ModuleRegistry.registerModules([AllCommunityModule]);
@@ -43,14 +46,19 @@ ModuleRegistry.registerModules([AllCommunityModule]);
     NgScrollbarModule,
     MatExpansionModule,
     FeathericonsModule,
+    NgxSonnerToaster,
     // Angular Material
     MatCardModule,
     MatButtonModule,
     MatMenuModule
   ],
   providers: [
-    // { provide: AlbumGateway, useClass: AlbumApiService }
-    provideHttpClient()
+    provideHttpClient(
+      withInterceptors([ // Interceptores que se aplican a todas las solicitudes de la aplicación
+        authInterceptor,
+        errorInterceptor
+      ])
+    )
   ],
   bootstrap: [AppComponent]
 })

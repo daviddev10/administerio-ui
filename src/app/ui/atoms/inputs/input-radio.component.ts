@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { IRadioValue } from '../../../core/shared/interfaces/common.interface';
+import { IRadioValue } from '../../../core/interfaces/common.interface';
 
 @Component({
   selector: 'app-input-radio',

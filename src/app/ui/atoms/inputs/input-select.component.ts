@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IBaseInfo } from '../../../core/shared/interfaces/common.interface';
+import { IBaseInfo } from '../../../core/interfaces/common.interface';
 import { FormControl } from '@angular/forms';
 
 @Component({

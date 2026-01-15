@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MemberForm } from '../../shared/forms/member.form';
-import { IBaseInfo, IRadioValue } from '../../../../core/shared/interfaces/common.interface';
+import { IBaseInfo, IRadioValue } from '../../../../core/interfaces/common.interface';
 
 @Component({
   selector: 'app-member-form-view',
