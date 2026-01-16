@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ILoginFields } from '../shared/interfaces/login.interface';
 import { LoginForm } from '../shared/forms/login.form';
 import { IUserLogin } from '../shared/interfaces/user.interface';
-import { finalize, Subscription } from 'rxjs';
+import { finalize } from 'rxjs';
 import { UserService } from '../shared/services/user.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
@@ -29,7 +29,7 @@ export class LoginFormComponent {
     titleForm: 'INICIAR SESIÓN',
     preLinkText: '¿No tienes una cuenta?',
     linkText: 'Regístrate aquí',
-    linkUrl: '/auth/register',
+    linkUrl: '/auth/registro',
     googleButtonText: 'Iniciar con Google',
     dividerText: 'O con tus credenciales',
     mainButtonText: 'INGRESAR'

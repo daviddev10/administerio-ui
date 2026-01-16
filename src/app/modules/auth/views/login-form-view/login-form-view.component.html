@@ -5,7 +5,7 @@
                 <div class="title text-center">
                     <h3>{{pageFields.titleForm}}</h3>
                     <p class="text-black fs-15"> {{pageFields.preLinkText}}
-                        <a [routerLink]="pageFields.linkUrl" class="text-primary fw-medium">
+                        <a [routerLink]="pageFields.linkUrl" replaceUrl="true" class="text-primary fw-medium">
                             {{pageFields.linkText}}
                         </a>
                     </p>
@@ -19,12 +19,22 @@
                     </div>
                 </div>
                 <form [formGroup]="loginForm.form" (ngSubmit)="onSubmit()">
+                    @if (!isLogin) {
+                    <div class="form-group">
+                        <label class="label d-block fw-medium mb-10">
+                            Nombre de usuario
+                        </label>
+                        <input-text label="Ingresa tu usuario" icon="user" [InputControl]="loginForm.controls.UserName"
+                            [setFocus]="!isLogin">
+                        </input-text>
+                    </div>
+                    }
                     <div class="form-group">
                         <label class="label d-block fw-medium mb-10">
                             Correo electrónico
                         </label>
                         <input-text label="Ingresa tu correo" icon="mail" [InputControl]="loginForm.controls.Email"
-                            [setFocus]="true">
+                            [setFocus]="isLogin">
                         </input-text>
                     </div>
                     <div class="form-group">
@@ -33,6 +43,7 @@
                         </label>
                         <input-password [InputControl]="loginForm.controls.Password"></input-password>
                     </div>
+                    @if (isLogin) {
                     <div class="info d-flex justify-content-between align-items-center">
                         <mat-checkbox color="primary">
                             Recuérdeme
@@ -41,8 +52,8 @@
                             ¿Olvidaste tu contraseña?
                         </a>
                     </div>
-                    <button mat-button type="submit"
-                        [disabled]="loginForm.controls.Email.invalid || loginForm.controls.Password.invalid || isLoading">
+                    }
+                    <button mat-button type="submit" [disabled]="loginForm.form.invalid || isLoading">
                         @if (isLoading) {
                         <i class="ri-loader-4-line spinner"></i>
                         }

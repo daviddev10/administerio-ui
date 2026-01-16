@@ -11,12 +11,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { UiModule } from "../../ui/ui.module";
+import { RegisterFormComponent } from './controllers/register-form.component';
 
 
 @NgModule({
   declarations: [
     LoginFormComponent,
     LoginFormViewComponent,
+    RegisterFormComponent,
   ],
   imports: [
     CommonModule,

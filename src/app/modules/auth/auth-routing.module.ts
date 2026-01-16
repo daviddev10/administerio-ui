@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginFormComponent } from './controllers/login-form.component';
 import { authGuard } from '../../core/guards/auth.guard';
+import { RegisterFormComponent } from './controllers/register-form.component';
 
 const routes: Routes = [
   {
-    path: '', children: [
-      { path: 'login', component: LoginFormComponent, canActivate: [authGuard] },
+    path: '',
+    canActivate: [authGuard],
+    children: [
+      { path: 'login', component: LoginFormComponent },
+      { path: 'registro', component: RegisterFormComponent },
     ]
   }
 ];

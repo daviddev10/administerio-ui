@@ -16,7 +16,7 @@ export class LoginFormViewComponent {
   @Input() isLoading: boolean = false;
   @Input({ required: true }) pageFields: ILoginFields;
 
-  @Output() onSendData = new EventEmitter<IUserLogin | ISaveUser>();
+  @Output() onSendData = new EventEmitter();
 
   public onSubmit(): void {
     if (this.loginForm.form.valid) {
