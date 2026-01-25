@@ -21,7 +21,7 @@ export class AlertService {
       allowOutsideClick: false,
       allowEscapeKey: false,
       showConfirmButton: false,
-      showCloseButton: true, // Solo para pruebas
+      // showCloseButton: true, // Solo para pruebas
       didOpen: () => {
         Swal.showLoading();
       },

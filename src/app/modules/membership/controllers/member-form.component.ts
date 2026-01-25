@@ -60,7 +60,7 @@ export class MemberFormComponent implements OnInit {
   public async onSaveMember(): Promise<void> {
     if (this.memberForm.form.valid) {
       try {
-        this.alertService.startLoading();
+        this.alertService.startLoading('Guardando...');
         const memberDataModel: ISaveMember = this.ucMembership.getMemberSaveData(this.memberForm.form.getRawValue());
         if (this.editId) {
           const updateMember = await this.ucMembership.onUpdateMember(memberDataModel, this.editId);
